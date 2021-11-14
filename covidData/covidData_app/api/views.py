@@ -17,7 +17,7 @@ class CountryList(generics.ListAPIView):
     '''
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
-    pagination_class = CountryListPagination
+    #pagination_class = CountryListPagination
     filter_backends = [filters.OrderingFilter, filters.SearchFilter, DjangoFilterBackend]
     ordering_fields = ['name', 'update', 'confirmed', 'critical', 'deaths', 'recovered']
    # ordering_fields = '__all__'

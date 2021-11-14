@@ -1,0 +1,124 @@
+<div class="jumbotron">
+  <div *ngIf="currentCountry.id" class="edit-form">
+    <h4>Update Info</h4>
+    <form>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          [(ngModel)]="currentCountry.name"
+          name="name"
+        />
+      </div>
+      <div class="form-group">
+        <label for="countryCode">Code</label>
+        <input
+          type="text"
+          class="form-control"
+          id="countryCode"
+          [(ngModel)]="currentCountry.code"
+          name="countryCode"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="confirmed">Confirmed</label>
+        <input
+          type="text"
+          class="form-control"
+          id="confirmed"
+          [(ngModel)]="currentCountry.confirmed"
+          name="confirmed"
+        />
+      </div>
+
+
+      <div class="form-group">
+        <label for="recovered">Recovered</label>
+        <input
+          type="text"
+          class="form-control"
+          id="recovered"
+          [(ngModel)]="currentCountry.recovered"
+          name="recovered"
+        />
+      </div>
+
+
+      <div class="form-group">
+        <label for="critical">Critical</label>
+        <input
+          type="text"
+          class="form-control"
+          id="critical"
+          [(ngModel)]="currentCountry.critical"
+          name="critical"
+        />
+      </div>
+
+
+      <div class="form-group">
+        <label for="deaths">Deaths</label>
+        <input
+          type="text"
+          class="form-control"
+          id="deaths"
+          [(ngModel)]="currentCountry.deaths"
+          name="deaths"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="latitude">Latitude</label>
+        <input
+          type="text"
+          class="form-control"
+          id="latitude"
+          [(ngModel)]="currentCountry.latitude"
+          name="latitude"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="longitude">Longitude</label>
+        <input
+          type="text"
+          class="form-control"
+          id="longitude"
+          [(ngModel)]="currentCountry.longitude"
+          name="code"
+        />
+      </div>
+
+    </form>
+
+    <div *ngIf= "message" class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong class="center">{{ message }}</strong>
+    </div>
+
+    <button class="badge badge-danger mr-2" (click)="deleteCountry()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mr-2"
+      (click)="updateCountry()"
+    >
+      Update
+    </button>
+
+    <button class="badge badge-warning mr-2" (click)="cancel()">
+      Back
+    </button>
+
+    
+  </div>
+
+  <div *ngIf="error===true">
+    <br />
+      <h4>Error Retriving the data...</h4>
+  </div>
+</div>

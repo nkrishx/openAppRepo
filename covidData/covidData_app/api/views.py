@@ -26,7 +26,7 @@ class CountryDetail(generics.RetrieveUpdateDestroyAPIView):
         return Country.objects.filter(pk=pk)
 
 
-class CountryDetailFilterView(generics.ListAPIView):
+class CountryDetailFilterView(generics.ListCreateAPIView):
     '''
     Filter according to fixed country codes available,
     needs an exact match to retrieve data.

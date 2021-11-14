@@ -1,0 +1,314 @@
+{
+	"info": {
+		"_postman_id": "fcf1c1a5-02dd-4106-bf74-767148fe2c7c",
+		"name": "openApp",
+		"description": "openApp asssignement collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "base",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						""
+					]
+				},
+				"description": "base GET request showing the list of countries"
+			},
+			"response": []
+		},
+		{
+			"name": "List countries",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/country/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"country",
+						""
+					]
+				},
+				"description": "End point for listing the counties with all capabilities."
+			},
+			"response": []
+		},
+		{
+			"name": "List Countries UI",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/country/data/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"country",
+						"data",
+						""
+					]
+				},
+				"description": "Endpoint to be used the frontend project for displaying list of countires "
+			},
+			"response": []
+		},
+		{
+			"name": "Country Detail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/country/data/1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"country",
+						"data",
+						"1",
+						""
+					]
+				},
+				"description": "end point for getting the individual country details."
+			},
+			"response": []
+		},
+		{
+			"name": "Update country",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Ireland\",\r\n    \"code\": \"IE\",\r\n    \"confirmed\": 480978,\r\n    \"recovered\": 401907,\r\n    \"critical\": 75,\r\n    \"deaths\": 5578,\r\n    \"latitude\": 53.41456,\r\n    \"longitude\": -8.247894\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/country/data/1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"country",
+						"data",
+						"1",
+						""
+					]
+				},
+				"description": "update the individual country details"
+			},
+			"response": []
+		},
+		{
+			"name": "order country list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/country/?ordering=name",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"country",
+						""
+					],
+					"query": [
+						{
+							"key": "ordering",
+							"value": "name"
+						}
+					]
+				},
+				"description": "ordering countries, aloowed options - name, update, confirmed, critical, deaths, recovered"
+			},
+			"response": []
+		},
+		{
+			"name": "search country",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/country/?search=UK",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"country",
+						""
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "UK"
+						}
+					]
+				},
+				"description": "search for a country based of name"
+			},
+			"response": []
+		},
+		{
+			"name": "filter country",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/country/?code=IE",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"country",
+						""
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "IE"
+						}
+					]
+				},
+				"description": "filter country based of country code, passed in as code as the parameter"
+			},
+			"response": []
+		},
+		{
+			"name": "pagination ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/country/?p=2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"country",
+						""
+					],
+					"query": [
+						{
+							"key": "p",
+							"value": "2"
+						}
+					]
+				},
+				"description": "apgination set for the country list"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Country",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Canada\",\r\n    \"code\": \"CA\",\r\n    \"confirmed\": 1748216,\r\n    \"recovered\": 1692768,\r\n    \"critical\": 545,\r\n    \"deaths\": 29335,\r\n    \"latitude\": 56.130366,\r\n    \"longitude\": -106.346771\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/country/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"country",
+						""
+					]
+				},
+				"description": "create a country with the given body"
+			},
+			"response": []
+		}
+	]
+}

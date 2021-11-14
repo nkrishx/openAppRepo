@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Country } from '../models/country/country.model';
 
-const baseUrl = 'http://localhost:8000/api/v1/countries';
+const baseUrl = 'http://localhost:8000/api/v1/country/data';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,7 @@ export class CountryService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Country[]> {
+    console.log("here to get the info");
     return this.http.get<Country[]>(baseUrl);
   }
 
@@ -28,13 +29,13 @@ export class CountryService {
     return this.http.delete(`${baseUrl}/${id}/`);
   }
 
-  deleteAll(): Observable<any> {
-    return this.http.delete(baseUrl);
-  }
+  // deleteAll(): Observable<any> {
+  //   return this.http.delete(baseUrl);
+  // }
 
-  findByCode(countryCode: any): Observable<Country[]> {
-    return this.http.get<Country[]>(`${baseUrl}?code=${countryCode}`);
-  }
+  // findByCode(countryCode: any): Observable<Country[]> {
+  //   return this.http.get<Country[]>(`${baseUrl}?code=${countryCode}`);
+  // }
 
 
 }

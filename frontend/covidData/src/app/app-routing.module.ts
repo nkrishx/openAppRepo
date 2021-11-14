@@ -5,9 +5,10 @@ import { CountriesListComponent } from './components/countries-list/countries-li
 import { CountryDetailsComponent } from './components/country-details/country-details.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'countries', pathMatch: 'full' },
-  { path: 'countries', component: CountriesListComponent },
-  { path: 'countries/:id', component: CountryDetailsComponent }
+  { path: '', redirectTo: 'country/data/', pathMatch: 'full' },
+  { path: 'country/data/', component: CountriesListComponent },
+  { path: 'country/data/:id', component: CountryDetailsComponent },
+  { path: '**', redirectTo: 'country/data/', pathMatch: 'full' }
 ];
 
 @NgModule({

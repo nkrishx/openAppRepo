@@ -27,11 +27,14 @@ class CountryDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CountrySerializer
 
     def get_queryset(self):
-        pk = self.kwargs['pk']
-        return Country.objects.filter(pk=pk)
+        try:
+            pk = self.kwargs['pk']
+            return Country.objects.filter(pk=pk)
+        except:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 
-class CountryDetailFilterView(generics.ListCreateAPIView):
+class CountryDetailFilterView(generics.ListAPIView):
     '''
     Filter according to fixed country codes available,
     needs an exact match to retrieve data.
@@ -42,6 +45,7 @@ class CountryDetailFilterView(generics.ListCreateAPIView):
     serializer_class = CountrySerializer
     filter_backends = [filters.OrderingFilter, filters.SearchFilter, DjangoFilterBackend]
     ordering_fields = ['name', 'update', 'confirmed', 'critical', 'deaths', 'recovered']
+    ordering = ['-id']
    # ordering_fields = '__all__'
     search_fields = ['name']
     filterset_fields = ['code']

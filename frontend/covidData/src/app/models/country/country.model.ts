@@ -1,6 +1,6 @@
 export class Country {
   id?: any;
-  name?: any;
+  country?: any;
   code?: string;
   confirmed?: number;
   recovered?: number;
@@ -8,5 +8,6 @@ export class Country {
   deaths?: number;
   latitude?: number;
   longitude?: number;
-  update?: number;
+  lastChange?: number;
+  lastUpdate?: number;
 }

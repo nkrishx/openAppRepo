@@ -9,12 +9,14 @@ import { CountryDetailsComponent } from './components/country-details/country-de
 import { CountriesListComponent } from './components/countries-list/countries-list.component';
 import { FormsModule } from '@angular/forms';
 import { CountryService } from './services/country.service';
+import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CountryDetailsComponent,
-    CountriesListComponent
+    CountriesListComponent,
+    FetchDataComponent
   ],
   imports: [
     BrowserModule,

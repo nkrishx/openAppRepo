@@ -4,7 +4,7 @@ from django.db import models
 
 class Country(models.Model):
 
-    name = models.CharField(max_length=50, blank=False)
+    country = models.CharField(max_length=50, blank=False)
     code = models.CharField(max_length=10, blank=False)
     confirmed = models.PositiveIntegerField()
     recovered = models.PositiveIntegerField()
@@ -12,8 +12,8 @@ class Country(models.Model):
     deaths = models.PositiveIntegerField()
     latitude = models.FloatField()
     longitude = models.FloatField()
-    created = models.DateTimeField(auto_now_add=True)
-    update = models.DateTimeField(auto_now=True)
+    lastChange = models.DateTimeField()
+    lastUpdate = models.DateTimeField()
 
     def __str__(self):
         return self.name

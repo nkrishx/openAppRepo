@@ -1,0 +1,74 @@
+<div class="jumbotron">
+
+  <div *ngIf= "message" class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong class="center">{{ message }}</strong>
+  </div>
+
+  <div>
+      <h4>Enter country code and click add to populate databse with country info</h4>
+    </div>
+
+    <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter country code"
+        [(ngModel)]="code"
+      />
+      <div class="input-group-append">
+        <button
+          class="badge badge-success ml-3 btn-outline-secondary"
+          type="button"
+          (click)="fetch()"
+        >
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+    <br>
+    <br>
+
+    <h4>Click view to see country information</h4>
+      <button class="badge badge-warning mr-2" (click)="view()">
+          View
+      </button>
+
+    <br>
+    <br>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">country</th>
+                <th scope="col">code</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td> <label>Ireland</label> </td>
+            <td> <strong>ie</strong> </td>
+          </tr>
+          <tr>
+            <td> <label>Germany</label> </td>
+            <td> <strong>de</strong></td>
+          </tr>
+          <tr>
+            <td> <label>Italy</label> </td>
+            <td> <strong>it</strong></td>
+          </tr>
+          <tr>
+            <td> <label>UK</label> </td>
+            <td> <strong>gb</strong> </td>
+          </tr>
+          <tr>
+            <td> <label>Spain</label> </td>
+            <td> <strong>es</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+</div>
+
+

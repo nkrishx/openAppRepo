@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Country } from '../models/country/country.model';
 
-const baseUrl = 'http://localhost:8000/api/v1/country/data';
+const baseUrl = 'http://localhost:8000/api/v1/country/data'; //base url to fetch data from the populated db
+const fetchUrl = 'http://localhost:8000/api/v1/country/fetch'; //base url used for any rapid api related operations including db population
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,6 @@ export class CountryService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Country[]> {
-    console.log("here to get the info");
     return this.http.get<Country[]>(baseUrl);
   }
 
@@ -27,6 +27,11 @@ export class CountryService {
 
   delete(id: any): Observable<any> {
     return this.http.delete(`${baseUrl}/${id}/`);
+  }
+
+  getDataRapidAPI(code: any) {
+    // console.log(`${baseUrl}/fetch/`);
+    return this.http.get<Country[]>(`${fetchUrl}?code=${code}`);
   }
 
   // deleteAll(): Observable<any> {

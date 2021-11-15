@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Country } from 'src/app/models/country/country.model';
 import { CountryService } from 'src/app/services/country.service';
@@ -18,7 +19,8 @@ export class CountriesListComponent implements OnInit {
   loaded = false;
   config: any;
 
-  constructor(private countryService: CountryService) { }
+  constructor(private countryService: CountryService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.retrieveCountries();
@@ -58,6 +60,10 @@ export class CountriesListComponent implements OnInit {
 
   pageChanged(event : any) {
     this.config.currentPage = event;
+  }
+
+  gotoFetch() {
+    this.router.navigate(['country/fetch']);
   }
 
   // deleteAllCountries(): void {

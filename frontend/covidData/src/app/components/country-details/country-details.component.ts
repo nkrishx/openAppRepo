@@ -11,7 +11,7 @@ import { Country } from 'src/app/models/country/country.model';
 export class CountryDetailsComponent implements OnInit {
 
   currentCountry: Country = {
-    name: '',
+    country: '',
     code: '',
     confirmed: 0,
     recovered: 0,
@@ -65,7 +65,7 @@ export class CountryDetailsComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
-          this.router.navigate(['/countries']);
+          this.router.navigate(['/country/data']);
         },
         error => {
           console.log(error);
@@ -74,7 +74,7 @@ export class CountryDetailsComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['/countries']);
+    this.router.navigate(['/country/data']);
   }
 
 }

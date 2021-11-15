@@ -39,7 +39,6 @@ export class CountryDetailsComponent implements OnInit {
       .subscribe(
         data => {
           this.currentCountry= data;
-          console.log(data);
         },
         error => {
           this.error = true;
@@ -51,7 +50,6 @@ export class CountryDetailsComponent implements OnInit {
     this.countryService.update(this.currentCountry.id, this.currentCountry)
       .subscribe(
         response => {
-          console.log(response);
           this.message = 'The country data was updated successfully!';
         },
         error => {
@@ -64,7 +62,6 @@ export class CountryDetailsComponent implements OnInit {
     this.countryService.delete(this.currentCountry.id)
       .subscribe(
         response => {
-          console.log(response);
           this.router.navigate(['/country/data']);
         },
         error => {

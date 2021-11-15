@@ -5,6 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework import status
 from django_filters.rest_framework import DjangoFilterBackend
 import requests
+from decouple import config
 
 from covidData_app.models import Country
 from covidData_app.api.serializers import CountrySerializer
@@ -49,18 +50,25 @@ class CountryDetailFilterView(generics.ListCreateAPIView):
 
 @api_view(['GET'])
 def CountryDataFetchView(request):
-    query_url = "https://covid-19-data.p.rapidapi.com/country/code"
+    '''
+    view for retrieving data from rapidAPI and serializing it and storing in db
+    '''
+    query_url = config('RAPID_API_QUERY_URL')
 
     headers = {
-    'x-rapidapi-host': "covid-19-data.p.rapidapi.com",
-    'x-rapidapi-key': "3ad19a4761msh51ac800fb2e2c5ap159813jsne62cfb3dca3c"
+    'x-rapidapi-host': config('RAPID_API_HOST'),
+    'x-rapidapi-key': config('RAPID_API_KEY')
     }
 
     if request.method == 'GET':
         code = request.GET.get('code', None)
         if code is not None:
             querystring = {"code":code}
-            response = requests.request("GET", query_url, headers=headers, params=querystring).json()
+            queryset = Country.objects.filter(code=code.upper()).exists()
+            if queryset != True:
+                response = requests.request("GET", query_url, headers=headers, params=querystring).json()
+            else:
+                return Response({"response":"Already exists!"},status=status.HTTP_400_BAD_REQUEST)
             if len(response)!=0:
                 serializer = CountrySerializer(data=response[0])
                 if serializer.is_valid():

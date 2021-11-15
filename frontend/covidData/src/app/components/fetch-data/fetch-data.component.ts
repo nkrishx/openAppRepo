@@ -12,14 +12,14 @@ export class FetchDataComponent implements OnInit {
 
   countries?: Country[];
   code = '';
-  loading = true;
   message = '';
+  config: any;
 
   constructor(private countryService: CountryService,
     private router: Router) { }
 
   ngOnInit(): void {
-    // this.retrieveCountries();
+    this.retrieveCountries();
   }
 
   retrieveCountries(): void {
@@ -27,27 +27,38 @@ export class FetchDataComponent implements OnInit {
     .subscribe(
       data => {
         this.countries= data;
-        this.loading = false;
-        console.log(data);
+        this.config = {
+          id: 'paginate',
+          itemsPerPage: 5,
+          currentPage: 1,
+          totalItems: this.countries.length
+        };
       },
       error => {
         console.log(error);
       });
 }
 
-  fetch() {
+  addCountry() {
     this.countryService.getDataRapidAPI(this.code).subscribe(data => {
-      console.log(data);
       this.message = 'The country data was added successfully!';
+      this.retrieveCountries();
     },
     error => {
-      console.log(error);
-      this.message = 'Error adding country data!';
-    })
+      if(error.error){
+        this.message = 'Country Already Exists in the database!';
+      } else {
+        this.message = 'Error adding country data!';
+      }
+    });
   }
 
   view() {
-     this.router.navigate(['/country/data']);
+     this.router.navigate(['/country/data/']);
+  }
+
+  pageChanged(event : any) {
+    this.config.currentPage = event;
   }
 
 }

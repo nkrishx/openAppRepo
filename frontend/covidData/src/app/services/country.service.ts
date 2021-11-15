@@ -30,8 +30,7 @@ export class CountryService {
   }
 
   getDataRapidAPI(code: any) {
-    // console.log(`${baseUrl}/fetch/`);
-    return this.http.get<Country[]>(`${fetchUrl}?code=${code}`);
+    return this.http.get<Country[]>(`${fetchUrl}/?code=${code}`);
   }
 
   // deleteAll(): Observable<any> {

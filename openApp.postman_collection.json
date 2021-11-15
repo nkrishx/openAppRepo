@@ -309,6 +309,39 @@
 				"description": "create a country with the given body"
 			},
 			"response": []
+		},
+		{
+			"name": "rapidAPI_fetch",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/country/fetch/?code=NZ",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"country",
+						"fetch",
+						""
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "NZ"
+						}
+					]
+				},
+				"description": "endpoint to send a request to rapidAPI to fetch country and populate database"
+			},
+			"response": []
 		}
 	]
 }

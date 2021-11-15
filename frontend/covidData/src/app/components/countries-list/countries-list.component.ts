@@ -38,7 +38,6 @@ export class CountriesListComponent implements OnInit {
             currentPage: 1,
             totalItems: this.countries.length
           };
-          console.log(data);
         },
         error => {
           this.loaded = true;

@@ -1,11 +1,13 @@
 from rest_framework import status
 from rest_framework.test import APITestCase
 from django.urls import reverse
-import datetime
 from django.utils.timezone import make_aware
+import datetime
+from decouple import config
 
 from covidData_app.models import Country
 from covidData_app.api.serializers import CountrySerializer
+
 
 class CountryListViewTestcase(APITestCase):
     '''
@@ -25,7 +27,8 @@ class CountryDetailFilterViewTestcase(APITestCase):
         response = self.client.get(reverse('country-filter-detail'))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-class CountryDetailView(APITestCase):
+
+class CountryDetailViewTestCase(APITestCase):
     '''
     test cases for checking an individual country object and 
     allowed operations on it
@@ -66,3 +69,16 @@ class CountryDetailView(APITestCase):
 
         response = self.client.patch(reverse('country-detail', args=(self.country.id,)), data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+
+class CountryDataFetchViewTestCase(APITestCase):
+    '''
+    Test case to retrieve data from rapidAPI and insert into db
+    custom string generated with get
+    '''
+    def setUp(self):
+        self.code = "IE"
+
+    def test_country_fetch_get(self):
+        response = self.client.get('%s?code=%s'%(reverse('country-fetch'), self.code))
+        self.assertEqual(response.status_code, status.HTTP_200_OK) 

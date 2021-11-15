@@ -8,6 +8,6 @@ export class Country {
   deaths?: number;
   latitude?: number;
   longitude?: number;
-  lastChange?: number;
-  lastUpdate?: number;
+  created?: number;
+  updated?: number;
 }

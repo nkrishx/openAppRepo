@@ -4,8 +4,9 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
 from django_filters.rest_framework import DjangoFilterBackend
-import requests
+from django.urls import reverse
 from decouple import config
+import requests
 
 from covidData_app.models import Country
 from covidData_app.api.serializers import CountrySerializer
@@ -13,11 +14,14 @@ from covidData_app.api.pagination import CountryListPagination
 
 class CountryListView(generics.ListAPIView):
     '''
-    ListAPIView for get and post requests for countries, 
+    ListAPIView for get requests for countries, 
     create only allowed through the admin panel.
     '''
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
+    filter_backends = [filters.OrderingFilter]
+    ordering_fields = ['id','name', 'created','updated', 'confirmed', 'critical', 'deaths', 'recovered']
+    ordering = ['-updated']
 
 
 class CountryDetailView(generics.RetrieveUpdateDestroyAPIView):
@@ -44,8 +48,8 @@ class CountryDetailFilterView(generics.ListAPIView):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
     filter_backends = [filters.OrderingFilter, filters.SearchFilter, DjangoFilterBackend]
-    ordering_fields = ['name', 'update', 'confirmed', 'critical', 'deaths', 'recovered']
-    ordering = ['-id']
+    ordering_fields = ['name', 'created','updated', 'confirmed', 'critical', 'deaths', 'recovered']
+    ordering = ['updated']
    # ordering_fields = '__all__'
     search_fields = ['name']
     filterset_fields = ['code']
@@ -53,7 +57,7 @@ class CountryDetailFilterView(generics.ListAPIView):
 
 
 @api_view(['GET'])
-def CountryDataFetchView(request):
+def CountryDataFetchView(request, **kwargs):
     '''
     view for retrieving data from rapidAPI and serializing it and storing in db
     '''

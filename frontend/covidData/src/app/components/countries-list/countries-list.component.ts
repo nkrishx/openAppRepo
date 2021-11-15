@@ -41,7 +41,6 @@ export class CountriesListComponent implements OnInit {
         },
         error => {
           this.loaded = true;
-          console.log(error);
         });
   }
 
@@ -64,30 +63,5 @@ export class CountriesListComponent implements OnInit {
   gotoFetch() {
     this.router.navigate(['country/fetch']);
   }
-
-  // deleteAllCountries(): void {
-  //   this.countryService.deleteAll()
-  //     .subscribe({
-  //       next: (res) => {
-  //         console.log(res);
-  //         this.refreshList();
-  //       },
-  //       error: (e) => console.error(e)
-  //     });
-  // }
-
-  // searchCountryCode(): void {
-  //   this.currentCountry = {};
-  //   this.currentIndex = -1;
-
-  //   this.countryService.findByCode(this.code)
-  //     .subscribe({
-  //       next: (data) => {
-  //         this.countries = data;
-  //         console.log(data);
-  //       },
-  //       error: (e) => console.error(e)
-  //     });
-  // }
 
 }

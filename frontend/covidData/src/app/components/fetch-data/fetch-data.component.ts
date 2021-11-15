@@ -35,7 +35,6 @@ export class FetchDataComponent implements OnInit {
         };
       },
       error => {
-        console.log(error);
       });
 }
 

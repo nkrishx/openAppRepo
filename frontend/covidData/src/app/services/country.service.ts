@@ -33,13 +33,4 @@ export class CountryService {
     return this.http.get<Country[]>(`${fetchUrl}/?code=${code}`);
   }
 
-  // deleteAll(): Observable<any> {
-  //   return this.http.delete(baseUrl);
-  // }
-
-  // findByCode(countryCode: any): Observable<Country[]> {
-  //   return this.http.get<Country[]>(`${baseUrl}?code=${countryCode}`);
-  // }
-
-
 }

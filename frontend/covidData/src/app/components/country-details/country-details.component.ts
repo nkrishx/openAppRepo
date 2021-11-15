@@ -42,7 +42,6 @@ export class CountryDetailsComponent implements OnInit {
         },
         error => {
           this.error = true;
-          console.log(error);
         });
   }
 
@@ -53,7 +52,6 @@ export class CountryDetailsComponent implements OnInit {
           this.message = 'The country data was updated successfully!';
         },
         error => {
-          console.log(error.message);
           this.message = error.message;
         });
   }
@@ -65,7 +63,6 @@ export class CountryDetailsComponent implements OnInit {
           this.router.navigate(['/country/data']);
         },
         error => {
-          console.log(error);
           this.message = error.message;
         });
   }

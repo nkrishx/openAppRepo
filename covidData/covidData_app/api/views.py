@@ -50,7 +50,6 @@ class CountryDetailFilterView(generics.ListAPIView):
     filter_backends = [filters.OrderingFilter, filters.SearchFilter, DjangoFilterBackend]
     ordering_fields = ['name', 'created','updated', 'confirmed', 'critical', 'deaths', 'recovered']
     ordering = ['updated']
-   # ordering_fields = '__all__'
     search_fields = ['name']
     filterset_fields = ['code']
     pagination_class = CountryListPagination
@@ -76,7 +75,7 @@ def CountryDataFetchView(request, **kwargs):
             if queryset != True:
                 response = requests.request("GET", query_url, headers=headers, params=querystring).json()
             else:
-                return Response({"response":"Already exists!"},status=status.HTTP_400_BAD_REQUEST)
+                return Response({"response":"Country Already exists!"},status=status.HTTP_400_BAD_REQUEST)
             if len(response)!=0:
                 serializer = CountrySerializer(data=response[0])
                 if serializer.is_valid():

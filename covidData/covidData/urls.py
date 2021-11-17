@@ -22,3 +22,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('covidData_app.api.urls')),
 ]
+handler404 = "covidData_app.api.views.page_not_found_view"

@@ -1,4 +1,4 @@
-# openAppRepo
+# Covid-19 Data 
 A simple web application built using django rest framework for serving endpoints and an angular frontend for user interaction.
 The database used is postgres database. The data is fetched from rapiAPI's public endpoint.
 The idea of the application is that we fetch covid-19 related information for countries using an unique country code for each.
